@@ -36,7 +36,9 @@
 
   /* ---------- 数据加载 ---------- */
   async function loadData() {
-    const res = await fetch(DATA_URL, { cache: 'no-store' });
+    // 加时间戳参数，彻底绕过 Vercel/CDN 边缘缓存，保证更新即时可见
+    const ts = Date.now();
+    const res = await fetch(DATA_URL + '?t=' + ts, { cache: 'no-store' });
     if (!res.ok) throw new Error('数据加载失败: ' + res.status);
     return await res.json();
   }
