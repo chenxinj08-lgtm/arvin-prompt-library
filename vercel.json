@@ -1,0 +1,17 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "headers": [
+    {
+      "source": "/data/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-cache, no-store, must-revalidate" },
+        { "key": "Content-Type", "value": "application/json; charset=utf-8" }
+      ]
+    }
+  ],
+  "rewrites": [
+    { "source": "/case/:slug", "destination": "/detail.html?slug=:slug" },
+    { "source": "/detail/:slug", "destination": "/detail.html?slug=:slug" }
+  ]
+}
