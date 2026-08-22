@@ -224,7 +224,10 @@
         state.cases.forEach(c => { if (!c.slug) c.slug = slugify(c.title || c.id); });
       }
       updateFooter(data.updatedAt);
-      if (location.pathname.endsWith('detail.html') || location.search) {
+      // 详情页判定：只有带 slug 参数或路径含 detail 时才是详情页
+      const params = new URLSearchParams(location.search);
+      const isDetail = params.has('slug') || location.pathname.includes('detail');
+      if (isDetail) {
         renderDetail();
       } else {
         renderHome();
