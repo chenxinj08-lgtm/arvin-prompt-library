@@ -2,7 +2,7 @@
 (function () {
   'use strict';
 
-  const DATA_URL = './data/prompts.json';
+  const DATA_URL = './prompts.json';
   const $ = (sel, root) => (root || document).querySelector(sel);
   const $$ = (sel, root) => Array.from((root || document).querySelectorAll(sel));
 
